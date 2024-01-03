@@ -149,7 +149,7 @@ export default function Home() {
               </TabsList>
             </Tabs>
           )}
-          {!!error && (
+          {(!!error || feedbacks.length === 0) && (
             <div className="w-full flex flex-col opacity-60 items-center py-10 space-y-3">
               <MessageCircleDashedIcon width={40} height={40} />
               <span className="font-medium">نظری یافت نشد.</span>

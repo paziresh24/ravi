@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Button } from "@padar/button";
-import { Loader2, MessageCircleDashedIcon } from "lucide-react";
+import { Loader2, MessageCircleDashedIcon, UserIcon } from "lucide-react";
 import { FeedbackCard } from "@/lib/feedback-card";
 import useSWRInfinite from "swr/infinite";
 import { Avatar, AvatarFallback, AvatarImage } from "@padar/react";
@@ -104,24 +104,21 @@ export default function Home({ params }: { params: { user_id: string } }) {
   };
 
   return (
-    <main className="flex bg-gray-100 min-h-screen flex-col items-center justify-center p-5 md:py-24">
-      {(isLoading || usersLoading) && <Loader2 className="animate-spin" />}
+    <main className="flex bg-gray-50 min-h-screen flex-col items-center p-5 md:py-24">
+      {(isLoading || usersLoading || !user) && <Loader2 className="animate-spin" />}
 
-      {!isLoading && !usersLoading && (
+      {!isLoading && !usersLoading && user && (
         <div className="w-full space-y-6 flex flex-col justify-center items-center">
-          <div className="flex flex-col space-y-3 justify-center items-center">
-            <Avatar className="w-36 h-36">
-              <AvatarImage />
-              <AvatarFallback className="bg-gray-200 text-xl font-semibold text-gray-400">
-                {user.name[0] + " " + user.family[0]}
-              </AvatarFallback>
-            </Avatar>
-            <span className="font-bold">
-              {user.name} {user.family}
-            </span>
+          <div className="flex flex-col space-y-3 lg:w-2/5 w-full">
+            <div className="flex gap-1 items-center">
+              <UserIcon />
+              <span className="font-bold">
+                {user.name} {user.family}
+              </span>
+            </div>
           </div>
           <div className="flex flex-col space-y-3 lg:w-2/5 w-full">
-            {!!error && (
+            {(!!error || feedbacks.length === 0) && (
               <div className="w-full flex flex-col opacity-60 items-center py-10 space-y-3">
                 <MessageCircleDashedIcon width={40} height={40} />
                 <span className="font-medium">نظری یافت نشد.</span>
