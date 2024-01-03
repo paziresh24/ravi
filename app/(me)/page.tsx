@@ -129,7 +129,20 @@ export default function Home() {
   return (
     <main className="flex bg-gray-50 min-h-screen flex-col items-center p-5 md:py-24">
       {(userLoading || isLoading) && <Loader2 className="animate-spin" />}
-      {!userLoading && !isLogined && <Button size="lg">ورود با پذیرش24</Button>}
+      {!userLoading && !isLogined && (
+        <Button
+          onClick={() =>
+            location.assign(
+              `https://paziresh24.com/login?redirect_url=${encodeURIComponent(
+                window.location.href
+              )}`
+            )
+          }
+          size="lg"
+        >
+          ورود با پذیرش24
+        </Button>
+      )}
 
       {!isLoading && user?.id && (
         <div className="flex flex-col space-y-3 lg:w-2/5 w-full">
