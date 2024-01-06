@@ -112,12 +112,12 @@ export default function Home({ params }: { params: { user_id: string } }) {
             <div className="flex gap-1 items-center">
               <UserIcon />
               <span className="font-bold">
-                {user.name} {user.family}
+                {!user.name && !user.family ? `${user.name} ${user.family}` : "کاربر بی‌نام"}
               </span>
             </div>
           </div>
           <div className="flex flex-col space-y-3 lg:w-2/5 w-full">
-            {(!!error || feedbacks.length === 0) && (
+            {(!!error || feedbacks.length === 0) && size === 0 && (
               <div className="w-full flex flex-col opacity-60 items-center py-10 space-y-3">
                 <MessageCircleDashedIcon width={40} height={40} />
                 <span className="font-medium">نظری یافت نشد.</span>
