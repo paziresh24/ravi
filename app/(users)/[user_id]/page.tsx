@@ -5,9 +5,8 @@ import { Button } from "@padar/button";
 import { Loader2, MessageCircleDashedIcon, UserIcon } from "lucide-react";
 import { FeedbackCard } from "@/lib/feedback-card";
 import useSWRInfinite from "swr/infinite";
-import { Avatar, AvatarFallback, AvatarImage } from "@padar/react";
 import useSWR from "swr";
-import { toast } from "sonner";
+import toast from "react-hot-toast";
 
 const getKey = (pageIndex: number, previousPageData: any, userId: string) => {
   if (previousPageData && !previousPageData.result.length) return null; // reached the end

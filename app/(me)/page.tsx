@@ -15,10 +15,10 @@ import {
   MessageCircleDashedIcon,
 } from "lucide-react";
 import { FeedbackCard } from "@/lib/feedback-card";
-import { toast } from "sonner";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@padar/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@padar/tabs";
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
+import toast from "react-hot-toast";
 
 const getKey = (
   pageIndex: number,

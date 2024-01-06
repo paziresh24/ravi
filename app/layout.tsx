@@ -5,9 +5,7 @@ import localFont from "next/font/local";
 import { SWRConfig } from "@/lib/swr-config";
 
 import { useTheme } from "next-themes";
-import { Toaster as Sonner } from "sonner";
-
-type ToasterProps = React.ComponentProps<typeof Sonner>;
+import { Toaster } from "react-hot-toast";
 
 const iransansFont = localFont({
   src: "../public/fonts/IRANSansXV.woff2",
@@ -23,19 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="fa-IR">
       <body dir="rtl" className={iransansFont.className}>
         <SWRConfig>{children}</SWRConfig>
-        <Sonner
-          theme={theme as ToasterProps["theme"]}
-          className="toaster group"
-          toastOptions={{
-            classNames: {
-              toast:
-                "group rtl toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg",
-              description: "group-[.toast]:text-muted-foreground",
-              actionButton: "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground",
-              cancelButton: "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground",
-            },
-          }}
-        />
+        <Toaster />
       </body>
     </html>
   );
