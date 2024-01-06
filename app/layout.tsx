@@ -19,6 +19,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="fa-IR">
+      <head>
+        <meta name="robots" content="noindex" />
+      </head>
       <body dir="rtl" className={iransansFont.className}>
         <SWRConfig>{children}</SWRConfig>
         <Toaster />
