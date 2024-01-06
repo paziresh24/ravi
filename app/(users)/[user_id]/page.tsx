@@ -112,7 +112,7 @@ export default function Home({ params }: { params: { user_id: string } }) {
             <div className="flex gap-1 items-center">
               <UserIcon />
               <span className="font-bold">
-                {!user.name && !user.family ? `${user.name} ${user.family}` : "کاربر بی‌نام"}
+                {!user.name && !user.family ? "کاربر بی‌نام" : `${user.name} ${user.family}`}
               </span>
             </div>
           </div>
