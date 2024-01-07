@@ -112,7 +112,7 @@ export default function Home({ params }: { params: { user_id: string } }) {
             <div className="flex gap-1 items-center">
               <UserIcon />
               <span className="font-bold">
-                {!user.name && !user.family
+                {!user?.name && !user?.family
                   ? "کاربر بی‌نام"
                   : `${user?.name ?? ""} ${user?.family ?? ""}`}
               </span>
@@ -137,7 +137,7 @@ export default function Home({ params }: { params: { user_id: string } }) {
                 symptomes={feedback.feedback_symptomes?.map((item: any) => item.symptomes)}
                 text={feedback?.description}
                 onLike={() => likeHandler(feedback.id)}
-                authorName={feedback?.user_name}
+                authorName={feedback?.user_name ?? "کاربر بی‌نام"}
                 providerName={feedback?.doctor_full_name}
                 dontShowAuthorName={feedback?.user_id === params?.user_id}
                 onReply={({ text }) =>
@@ -158,7 +158,7 @@ export default function Home({ params }: { params: { user_id: string } }) {
                   onEdit: ({ text }: { text: string }) =>
                     editHandler({ id: item.id, text, like: item.like }),
                   editable: loginedUser?.id === params?.user_id,
-                  authorName: user?.name,
+                  authorName: user?.name ?? "کاربر بی‌نام",
                   providerName: feedback?.user_name,
                 }))}
               />
