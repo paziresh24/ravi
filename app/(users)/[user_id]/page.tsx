@@ -104,15 +104,17 @@ export default function Home({ params }: { params: { user_id: string } }) {
 
   return (
     <main className="flex bg-gray-50 min-h-screen flex-col items-center p-5 md:py-24">
-      {(isLoading || usersLoading || !user) && <Loader2 className="animate-spin" />}
+      {(isLoading || usersLoading) && <Loader2 className="animate-spin" />}
 
-      {!isLoading && !usersLoading && user && (
+      {!isLoading && !usersLoading && (
         <div className="w-full space-y-6 flex flex-col justify-center items-center">
           <div className="flex flex-col space-y-3 lg:w-2/5 w-full">
             <div className="flex gap-1 items-center">
               <UserIcon />
               <span className="font-bold">
-                {!user.name && !user.family ? "کاربر بی‌نام" : `${user.name} ${user.family}`}
+                {!user.name && !user.family
+                  ? "کاربر بی‌نام"
+                  : `${user?.name ?? ""} ${user?.family ?? ""}`}
               </span>
             </div>
           </div>
